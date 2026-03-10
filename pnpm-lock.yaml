@@ -80,7 +80,33 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5(typescript@5.9.3)
 
-  packages/dropdown: {}
+  packages/dropdown:
+    dependencies:
+      '@nearby/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.4
+        version: 6.0.4(vite@7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))
+      sass-embedded:
+        specifier: ^1.81.0
+        version: 1.97.3
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.19
+      vite:
+        specifier: ^7.3.1
+        version: 7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))
+      vue:
+        specifier: ^3.5.0
+        version: 3.5.30(typescript@5.9.3)
+      vue-tsc:
+        specifier: ^3.2.5
+        version: 3.2.5(typescript@5.9.3)
 
   packages/feedback:
     dependencies:
