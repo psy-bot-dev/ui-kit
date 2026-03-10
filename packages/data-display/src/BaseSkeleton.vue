@@ -1,5 +1,5 @@
 <template>
-  <div class="skeleton" :class="variantClass" :style="customStyle" />
+  <div class="base-skeleton" :class="variantClass" :style="customStyle" />
 </template>
 
 <script setup lang="ts">
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   height: undefined,
 });
 
-const variantClass = computed(() => `skeleton--${props.variant}`);
+const variantClass = computed(() => `base-skeleton--${props.variant}`);
 
 const customStyle = computed(() => ({
   width: props.width,
@@ -26,7 +26,7 @@ const customStyle = computed(() => ({
 </script>
 
 <style scoped lang="scss">
-.skeleton {
+.base-skeleton {
   --skeleton-base: rgba(var(--theme-accent-rgb), 0.08);
   --skeleton-shine: rgba(var(--theme-accent-rgb), 0.15);
 
@@ -51,7 +51,7 @@ const customStyle = computed(() => ({
       transparent
     );
     transform: translateX(-100%);
-    animation: skeleton-shimmer 1.8s ease-in-out infinite;
+    animation: base-skeleton-shimmer 1.8s ease-in-out infinite;
   }
 
   &--text {
@@ -68,7 +68,7 @@ const customStyle = computed(() => ({
   }
 }
 
-@keyframes skeleton-shimmer {
+@keyframes base-skeleton-shimmer {
   0% {
     transform: translateX(-100%);
   }

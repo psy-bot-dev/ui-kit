@@ -10,7 +10,7 @@
       v-if="closable"
       class="base-tag__close"
       type="button"
-      aria-label="Remove tag"
+      :aria-label="closeAriaLabel"
       @click="emit('close')"
     >
       <svg
@@ -45,12 +45,14 @@ interface Props {
   variant?: TagVariant;
   size?: TagSize;
   closable?: boolean;
+  closeAriaLabel?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   variant: "primary",
   size: "md",
   closable: false,
+  closeAriaLabel: "Remove tag",
 });
 
 const emit = defineEmits<{
