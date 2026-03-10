@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { useId, computed, provide } from "vue";
-import { formGroupErrorIdKey, formGroupHintIdKey } from "@nearby/tokens";
+import { formGroupErrorIdKey, formGroupHintIdKey } from "@psy-bot-dev/tokens";
 
 interface Props {
   label?: string;

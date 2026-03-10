@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed, provide, readonly } from "vue";
-import { accordionKey } from "@nearby/tokens";
+import { accordionKey } from "@psy-bot-dev/tokens";
 
 interface Props {
   modelValue?: string | string[];

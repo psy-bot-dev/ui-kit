@@ -1,5 +1,5 @@
 {
-  "name": "@nearby/button",
+  "name": "@psy-bot-dev/button",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -13,11 +13,11 @@
   "sideEffects": ["*.css"],
   "peerDependencies": {
     "vue": ">=3.5.0",
-    "@nearby/tokens": "workspace:*",
-    "@nearby/spinner": "workspace:*"
+    "@psy-bot-dev/tokens": "workspace:*",
+    "@psy-bot-dev/spinner": "workspace:*"
   },
   "devDependencies": {
-    "@nearby/spinner": "workspace:*",
+    "@psy-bot-dev/spinner": "workspace:*",
     "@vitejs/plugin-vue": "^6.0.4",
     "sass-embedded": "^1.81.0",
     "tailwindcss": "^3.4.0",

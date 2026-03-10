@@ -11,7 +11,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["vue", /^@nearby\//],
+      external: ["vue", /^@psy-bot-dev\//],
     },
     cssCodeSplit: false,
   },

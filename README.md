@@ -89,6 +89,8 @@ pnpm version-packages  # bump versions from changesets
 pnpm release           # build and publish (CI or manual)
 ```
 
+Packages are published to **GitHub Packages** as private under the `@psy-bot-dev` scope. CI uses `GITHUB_TOKEN`; consumers need a PAT with `read:packages` and `.npmrc` with `@psy-bot-dev:registry=https://npm.pkg.github.com` and auth token.
+
 ## Repository structure
 
 ```

@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed, inject, useId } from "vue";
-import { formGroupErrorIdKey, formGroupHintIdKey } from "@nearby/tokens";
+import { formGroupErrorIdKey, formGroupHintIdKey } from "@psy-bot-dev/tokens";
 
 interface Props {
   modelValue?: string;

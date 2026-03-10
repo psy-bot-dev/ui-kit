@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { BaseSpinner } from "@nearby/spinner";
+import { BaseSpinner } from "@psy-bot-dev/spinner";
 
 type Variant = "primary" | "secondary" | "danger" | "ghost" | "outline";
 type Size = "sm" | "md" | "lg";

@@ -1,5 +1,5 @@
 {
-  "name": "@nearby/feedback",
+  "name": "@psy-bot-dev/feedback",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -13,7 +13,7 @@
   "sideEffects": ["*.css"],
   "peerDependencies": {
     "vue": ">=3.5.0",
-    "@nearby/tokens": "workspace:*"
+    "@psy-bot-dev/tokens": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.4",

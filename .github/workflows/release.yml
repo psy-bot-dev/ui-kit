@@ -24,6 +24,7 @@ jobs:
           node-version: 22
           cache: "pnpm"
           registry-url: "https://npm.pkg.github.com"
+          scope: "@psy-bot-dev"
 
       - name: Install
         run: pnpm install --frozen-lockfile

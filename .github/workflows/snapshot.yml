@@ -32,6 +32,7 @@ jobs:
           node-version: 22
           cache: "pnpm"
           registry-url: "https://npm.pkg.github.com"
+          scope: "@psy-bot-dev"
 
       - name: Install
         run: pnpm install --frozen-lockfile
@@ -66,5 +67,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `### 📦 Snapshot published\n\n${versions}\n\nInstall:\n\`\`\`bash\npnpm add @nearby/tokens@alpha\n\`\`\``,
+              body: `### 📦 Snapshot published\n\n${versions}\n\nInstall:\n\`\`\`bash\npnpm add @psy-bot-dev/tokens@alpha\n\`\`\``,
             });

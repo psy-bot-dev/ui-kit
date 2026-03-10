@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { useId, inject, ref, computed } from "vue";
-import { accordionKey } from "@nearby/tokens";
+import { accordionKey } from "@psy-bot-dev/tokens";
 
 interface Props {
   modelValue?: boolean;

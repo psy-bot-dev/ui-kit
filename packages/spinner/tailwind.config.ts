@@ -1,4 +1,4 @@
-import { nearbyPreset } from "@nearby/tokens/tailwind";
+import { nearbyPreset } from "@psy-bot-dev/tokens/tailwind";
 import type { Config } from "tailwindcss";
 
 export default {

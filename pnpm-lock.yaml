@@ -52,11 +52,11 @@ importers:
 
   packages/button:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
-      '@nearby/spinner':
+      '@psy-bot-dev/spinner':
         specifier: workspace:*
         version: link:../spinner
       '@vitejs/plugin-vue':
@@ -83,7 +83,7 @@ importers:
 
   packages/data-display:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -111,7 +111,7 @@ importers:
 
   packages/dropdown:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -139,7 +139,7 @@ importers:
 
   packages/feedback:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -167,7 +167,7 @@ importers:
 
   packages/forms:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -195,7 +195,7 @@ importers:
 
   packages/layout:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -223,7 +223,7 @@ importers:
 
   packages/spinner:
     dependencies:
-      '@nearby/tokens':
+      '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
