@@ -74,10 +74,21 @@ pnpm lint
 
 | Command | Description |
 |---------|-------------|
+| `pnpm run docs` | Start Histoire dev server (component stories) |
 | `pnpm build` | Build every package |
 | `pnpm typecheck` | Run `vue-tsc --noEmit` in each package |
 | `pnpm lint` | ESLint for the repo |
 | `pnpm --filter @psy-bot-dev/button build` | Build a single package |
+
+### Adding component stories
+
+Stories live in `apps/docs/src/stories/*.story.vue`. To add a story for a component:
+
+1. Create a new file, e.g. `ComponentName.story.vue`.
+2. Import from `@psy-bot-dev/ui`, use `<Story>` and `<Variant>` (see existing BaseSpinner / BaseButton stories).
+3. Run `pnpm run docs` to verify.
+
+Full guide: [docs/adding-stories.md](docs/adding-stories.md).
 
 ### Versioning and release
 
