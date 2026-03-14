@@ -8,6 +8,8 @@
     "pnpm": ">=10"
   },
   "scripts": {
+    "docs": "pnpm --filter @psy-bot-dev/docs story:dev",
+    "storybook": "pnpm --filter @psy-bot-dev/docs story:dev",
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "pnpm -r build",
