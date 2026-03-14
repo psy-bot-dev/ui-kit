@@ -36,7 +36,19 @@ jobs:
         run: pnpm -r build
 
       - name: Release
-        run: pnpm release
+        run: |
+          set +e
+          output=$(pnpm release 2>&1)
+          code=$?
+          set -e
+          echo "$output"
+          if [ $code -ne 0 ]; then
+            if echo "$output" | grep -qEi 'already published|version already exists|cannot publish over|duplicate version'; then
+              echo "Version already in registry, treating as success"
+              exit 0
+            fi
+            exit $code
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
