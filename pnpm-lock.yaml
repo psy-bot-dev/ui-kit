@@ -41,6 +41,9 @@ importers:
       happy-dom:
         specifier: ^20.8.4
         version: 20.8.4
+      husky:
+        specifier: ^9.1.7
+        version: 9.1.7
       multi-semantic-release:
         specifier: ^3.0.2
         version: 3.1.0(typescript@5.9.3)
@@ -104,7 +107,7 @@ importers:
         version: link:../spinner
       '@vitejs/plugin-vue':
         specifier: ^6.0.4
-        version: 6.0.4(vite@7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))
+        version: 6.0.4(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))
       sass-embedded:
         specifier: ^1.81.0
         version: 1.97.3
@@ -113,10 +116,10 @@ importers:
         version: 3.4.19
       vite:
         specifier: ^7.3.1
-        version: 7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)
+        version: 7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3)
       vite-plugin-dts:
         specifier: ^4.5.4
-        version: 4.5.4(@types/node@25.5.0)(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))
+        version: 4.5.4(@types/node@25.5.0)(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3))
       vue:
         specifier: ^3.5.0
         version: 3.5.30(typescript@5.9.3)
@@ -2487,6 +2490,11 @@ packages:
   human-signals@8.0.1:
     resolution: {integrity: sha512-eKCa6bwnJhvxj14kZk5NCPc6Hb6BdsU9DZcOnmQKSnO1VKrfV0zCvtttPZUsBvjmNDn8rpcJfpwSYnHBjc95MQ==}
     engines: {node: '>=18.18.0'}
+
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
@@ -5489,12 +5497,6 @@ snapshots:
       vite: 4.5.14(@types/node@25.5.0)(sass@1.97.3)
       vue: 3.5.30(typescript@5.9.3)
 
-  '@vitejs/plugin-vue@6.0.4(vite@7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))':
-    dependencies:
-      '@rolldown/pluginutils': 1.0.0-rc.2
-      vite: 7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)
-      vue: 3.5.30(typescript@5.9.3)
-
   '@vitejs/plugin-vue@6.0.4(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.2
@@ -6755,6 +6757,8 @@ snapshots:
   human-signals@5.0.0: {}
 
   human-signals@8.0.1: {}
+
+  husky@9.1.7: {}
 
   iconv-lite@0.6.3:
     dependencies:
@@ -8286,25 +8290,6 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-dts@4.5.4(@types/node@25.5.0)(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)):
-    dependencies:
-      '@microsoft/api-extractor': 7.57.7(@types/node@25.5.0)
-      '@rollup/pluginutils': 5.3.0(rollup@4.59.0)
-      '@volar/typescript': 2.4.28
-      '@vue/language-core': 2.2.0(typescript@5.9.3)
-      compare-versions: 6.1.1
-      debug: 4.4.3
-      kolorist: 1.8.0
-      local-pkg: 1.1.2
-      magic-string: 0.30.21
-      typescript: 5.9.3
-    optionalDependencies:
-      vite: 7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)
-    transitivePeerDependencies:
-      - '@types/node'
-      - rollup
-      - supports-color
-
   vite-plugin-dts@4.5.4(@types/node@25.5.0)(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3)):
     dependencies:
       '@microsoft/api-extractor': 7.57.7(@types/node@25.5.0)
@@ -8333,21 +8318,6 @@ snapshots:
       '@types/node': 25.5.0
       fsevents: 2.3.3
       sass: 1.97.3
-
-  vite@7.3.1(@types/node@25.5.0)(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3):
-    dependencies:
-      esbuild: 0.27.3
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.8
-      rollup: 4.59.0
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 25.5.0
-      fsevents: 2.3.3
-      jiti: 1.21.7
-      sass: 1.97.3
-      sass-embedded: 1.97.3
 
   vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3):
     dependencies:

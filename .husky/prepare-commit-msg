@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+msgfile="$1"
+[ -f "$msgfile" ] || exit 0
+tmp=$(mktemp)
+grep -viE '^(co-authored-by:|Made-with:)' "$msgfile" > "$tmp" || true
+mv "$tmp" "$msgfile"
