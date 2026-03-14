@@ -261,7 +261,48 @@ importers:
         specifier: ^3.5.0
         version: 3.5.30(typescript@5.9.3)
 
-  packages/ui: {}
+  packages/ui:
+    dependencies:
+      '@psy-bot-dev/button':
+        specifier: workspace:*
+        version: link:../button
+      '@psy-bot-dev/data-display':
+        specifier: workspace:*
+        version: link:../data-display
+      '@psy-bot-dev/dropdown':
+        specifier: workspace:*
+        version: link:../dropdown
+      '@psy-bot-dev/feedback':
+        specifier: workspace:*
+        version: link:../feedback
+      '@psy-bot-dev/forms':
+        specifier: workspace:*
+        version: link:../forms
+      '@psy-bot-dev/layout':
+        specifier: workspace:*
+        version: link:../layout
+      '@psy-bot-dev/spinner':
+        specifier: workspace:*
+        version: link:../spinner
+      '@psy-bot-dev/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.4
+        version: 6.0.4(vite@7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))(vue@3.5.30(typescript@5.9.3))
+      vite:
+        specifier: ^7.3.1
+        version: 7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(jiti@1.21.7)(sass-embedded@1.97.3)(sass@1.97.3))
+      vue:
+        specifier: ^3.5.0
+        version: 3.5.30(typescript@5.9.3)
+      vue-tsc:
+        specifier: ^3.2.5
+        version: 3.2.5(typescript@5.9.3)
 
 packages:
 
