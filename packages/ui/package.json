@@ -1,6 +1,6 @@
 {
   "name": "@psy-bot-dev/ui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
@@ -9,8 +9,13 @@
     },
     "./style.css": "./style.css"
   },
-  "files": ["dist", "style.css"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist",
+    "style.css"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "dependencies": {
     "@psy-bot-dev/tokens": "workspace:*",
     "@psy-bot-dev/spinner": "workspace:*",

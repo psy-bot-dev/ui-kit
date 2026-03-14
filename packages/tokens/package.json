@@ -1,6 +1,6 @@
 {
   "name": "@psy-bot-dev/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
@@ -14,8 +14,13 @@
       "types": "./dist/tailwind/preset.d.ts"
     }
   },
-  "files": ["dist", "src/css"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist",
+    "src/css"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "peerDependencies": {
     "vue": ">=3.5.0",
     "tailwindcss": ">=3.4.0"

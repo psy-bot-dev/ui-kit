@@ -1,6 +1,6 @@
 {
   "name": "@psy-bot-dev/spinner",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
@@ -9,8 +9,12 @@
     },
     "./style.css": "./dist/index.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "peerDependencies": {
     "vue": ">=3.5.0",
     "@psy-bot-dev/tokens": "workspace:*"
