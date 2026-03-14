@@ -43,8 +43,8 @@ jobs:
           set -e
           echo "$output"
           if [ $code -ne 0 ]; then
-            if echo "$output" | grep -qEi 'already published|version already exists|cannot publish over|duplicate version'; then
-              echo "Version already in registry, treating as success"
+            if echo "$output" | grep -qEi 'already published|version already exists|cannot publish over|duplicate version|tag .* already exists|fatal: tag .* already exists'; then
+              echo "Release already applied (version or tag exists), treating as success"
               exit 0
             fi
             exit $code
