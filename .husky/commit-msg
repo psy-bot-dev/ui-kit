@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# Strip Co-authored-by and Made-with trailers (Cursor/IDE add them)
+msgfile="$1"
+[ -f "$msgfile" ] || exit 1
+tmp=$(mktemp)
+grep -viE '^(co-authored-by:|made-with:)' "$msgfile" > "$tmp" || true
+mv "$tmp" "$msgfile"
