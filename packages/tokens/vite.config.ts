@@ -9,7 +9,7 @@ export default defineConfig({
         index: "src/index.ts",
         "tailwind/preset": "src/tailwind/preset.ts",
       },
-      formats: ["es"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: ["vue", "tailwindcss"],

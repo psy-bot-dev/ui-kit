@@ -4,14 +4,16 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./css/variables.css": "./src/css/variables.css",
     "./css/base.css": "./src/css/base.css",
     "./tailwind": {
+      "types": "./dist/tailwind/preset.d.ts",
       "import": "./dist/tailwind/preset.js",
-      "types": "./dist/tailwind/preset.d.ts"
+      "require": "./dist/tailwind/preset.cjs"
     }
   },
   "files": [
