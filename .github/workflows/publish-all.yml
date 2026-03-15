@@ -34,8 +34,9 @@ jobs:
 
       - name: Publish all to GitHub Packages
         run: |
+          # Only packages in packages/* (exclude apps/docs); publish in dependency order
           set +e
-          output=$(pnpm -r publish --no-git-checks 2>&1)
+          output=$(pnpm -r --filter './packages/*' publish --no-git-checks 2>&1)
           code=$?
           set -e
           echo "$output"
@@ -44,7 +45,9 @@ jobs:
               echo "Some versions already in registry, treating as success"
               exit 0
             fi
+            echo "::error::Publish failed. Fix errors above and re-run."
             exit $code
           fi
+          echo "::notice::All packages published. Check GitHub org Packages for @psy-bot-dev/*."
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
