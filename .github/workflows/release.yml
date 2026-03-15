@@ -42,6 +42,7 @@ jobs:
           code=$?
           set -e
           echo "$output"
+          echo "$output" > release-output.txt
           if [ $code -ne 0 ]; then
             if echo "$output" | grep -qEi 'already published|version already exists|cannot publish over|duplicate version|tag .* already exists|fatal: tag .* already exists'; then
               echo "Release already applied (version or tag exists), treating as success"
@@ -52,3 +53,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show published packages
+        if: success()
+        run: |
+          echo ""
+          echo "::group::📦 PUBLISHED PACKAGES"
+          if [ -f release-output.txt ]; then
+            published=$(grep -oE '@psy-bot-dev/[^@[:space:]]+@[0-9][^[:space:]"]*' release-output.txt | sort -u || true)
+            if [ -n "$published" ]; then
+              echo "$published" | while read -r line; do echo "  $line"; done
+            else
+              echo "  (no new versions published this run)"
+            fi
+          else
+            echo "  (release output not available)"
+          fi
+          echo "::endgroup::"

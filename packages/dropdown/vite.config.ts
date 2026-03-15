@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
+import injectCss from "../../tooling/vite-plugin-inject-css.mjs";
 
 export default defineConfig({
   css: { postcss: import.meta.dirname },
-  plugins: [vue(), dts({ rollupTypes: true })],
+  plugins: [vue(), dts({ rollupTypes: true }), injectCss()],
   build: {
     lib: {
       entry: "src/index.ts",
