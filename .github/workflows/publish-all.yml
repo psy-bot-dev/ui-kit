@@ -1,0 +1,50 @@
+# Manual publish of all @psy-bot-dev packages to GitHub Packages (current versions in package.json).
+# Use when psybot expects packages (e.g. data-display@0.2.0) that are not yet in registry.
+# Actions → Publish all packages → Run workflow.
+
+name: Publish all packages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@psy-bot-dev"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Publish all to GitHub Packages
+        run: |
+          set +e
+          output=$(pnpm -r publish --no-git-checks 2>&1)
+          code=$?
+          set -e
+          echo "$output"
+          if [ $code -ne 0 ]; then
+            if echo "$output" | grep -qEi 'already published|version already exists|cannot publish over|duplicate version|EPUBLISHCONFLICT'; then
+              echo "Some versions already in registry, treating as success"
+              exit 0
+            fi
+            exit $code
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
