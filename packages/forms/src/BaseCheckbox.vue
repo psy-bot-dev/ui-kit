@@ -25,7 +25,6 @@
         aria-hidden="true"
         viewBox="0 0 12 10"
         fill="none"
-        aria-hidden="true"
       >
         <path
           d="M1 5L4.5 8.5L11 1.5"
