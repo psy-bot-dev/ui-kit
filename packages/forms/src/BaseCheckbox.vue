@@ -22,6 +22,7 @@
       <svg
         v-if="modelValue && !indeterminate"
         class="base-checkbox__check"
+        aria-hidden="true"
         viewBox="0 0 12 10"
         fill="none"
         aria-hidden="true"

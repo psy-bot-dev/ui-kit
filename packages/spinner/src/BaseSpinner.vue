@@ -20,7 +20,6 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   size: "md",
   color: "current",
-  label: "",
 });
 </script>
 

@@ -8,6 +8,7 @@
       { 'base-card--clickable': clickable },
     ]"
     :type="clickable ? 'button' : undefined"
+    :tabindex="clickable ? 0 : undefined"
     @click="handleClick"
   >
     <div v-if="$slots.header" class="base-card__header">

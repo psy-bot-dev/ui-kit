@@ -4,6 +4,7 @@
     class="base-alert"
     :class="[`base-alert--${type}`, `base-alert--${variant}`]"
     :role="type === 'error' || type === 'warning' ? 'alert' : 'status'"
+    :aria-live="type === 'error' || type === 'warning' ? 'assertive' : 'polite'"
   >
     <span class="base-alert__icon">
       <slot name="icon">

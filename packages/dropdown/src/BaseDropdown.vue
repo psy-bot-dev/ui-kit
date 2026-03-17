@@ -1,6 +1,6 @@
 <template>
   <div ref="dropdownRef" class="base-dropdown">
-    <div ref="triggerRef" class="base-dropdown__trigger" @click="toggle">
+    <div ref="triggerRef" class="base-dropdown__trigger" @click="toggle" @keydown.enter.prevent="toggle" @keydown.space.prevent="toggle">
       <slot name="trigger" />
     </div>
 
