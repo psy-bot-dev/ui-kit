@@ -1,5 +1,5 @@
 <template>
-  <div class="base-skeleton" :class="variantClass" :style="customStyle" />
+  <div class="base-skeleton" :class="variantClass" :style="customStyle" aria-hidden="true" />
 </template>
 
 <script setup lang="ts">
