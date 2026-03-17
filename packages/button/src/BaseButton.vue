@@ -10,6 +10,7 @@
       },
     ]"
     :disabled="disabled || loading"
+    :aria-busy="loading || undefined"
     :type="type"
     @click="emit('click', $event)"
   >
