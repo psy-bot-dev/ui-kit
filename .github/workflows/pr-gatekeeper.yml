@@ -1,0 +1,38 @@
+name: "PR: Build, Typecheck & Lint"
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Restore build cache
+        id: build-cache
+        uses: actions/cache@v5
+        with:
+          path: packages/*/dist
+          key: build-${{ hashFiles('packages/*/src/**', 'packages/*/vite.config.ts', 'packages/*/tsconfig.json', 'packages/*/postcss.config.*', 'tooling/**') }}
+
+      - name: Build
+        if: steps.build-cache.outputs.cache-hit != 'true'
+        run: pnpm -r build
+
+      - name: Typecheck
+        run: pnpm -r typecheck
+
+      - name: Lint
+        run: pnpm lint

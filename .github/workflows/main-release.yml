@@ -1,4 +1,4 @@
-name: Release
+name: "Main: Semantic Release & Publish"
 
 on:
   push:
@@ -16,13 +16,13 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: "pnpm"
@@ -32,7 +32,15 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      - name: Restore build cache
+        id: build-cache
+        uses: actions/cache@v5
+        with:
+          path: packages/*/dist
+          key: build-${{ hashFiles('packages/*/src/**', 'packages/*/vite.config.ts', 'packages/*/tsconfig.json', 'packages/*/postcss.config.*', 'tooling/**') }}
+
       - name: Build
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: pnpm -r build
 
       - name: Release
