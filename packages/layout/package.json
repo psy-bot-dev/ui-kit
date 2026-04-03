@@ -1,6 +1,11 @@
 {
   "name": "@psy-bot-dev/layout",
   "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psy-bot-dev/ui-kit.git",
+    "directory": "packages/layout"
+  },
   "type": "module",
   "exports": {
     ".": {
