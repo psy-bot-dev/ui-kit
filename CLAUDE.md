@@ -312,6 +312,7 @@ Events: `click` (when clickable). Slots: `default`, `header`, `footer`.
 #### BaseAccordion + BaseCollapse
 Accordion: `modelValue` (string | string[]), `multiple` (boolean). Events: `update:modelValue`.
 Collapse: `title` (string, required), `disabled` (boolean), `collapseKey` (string). Slots: `default`, `title`.
+CSS variables for active (open) state: `--collapse-active-text` (default: `--collapse-text`), `--collapse-active-chevron` (default: `--collapse-muted`).
 
 #### BaseTabs
 | Prop | Type | Default | Description |

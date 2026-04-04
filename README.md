@@ -330,6 +330,15 @@ Props: `variant` (`"default" | "outlined" | "elevated"`), `padding` (`"none" | "
 Accordion: `modelValue` (string | string[]), `multiple` (boolean).
 Collapse: `title` (string, required), `collapseKey` (string), `disabled` (boolean). Slots: `default`, `title`.
 
+**Active state styling:** Override CSS variables to highlight the open item:
+
+```css
+.base-collapse {
+  --collapse-active-text: var(--theme-accent);
+  --collapse-active-chevron: var(--theme-accent);
+}
+```
+
 ### BaseTabs
 
 ```vue

@@ -112,6 +112,8 @@ function toggle() {
   --collapse-border: rgba(var(--theme-border-rgb), 0.2);
   --collapse-text: var(--theme-text);
   --collapse-muted: var(--theme-text-secondary);
+  --collapse-active-text: var(--collapse-text);
+  --collapse-active-chevron: var(--collapse-muted);
 
   font-family: var(--font-sans);
 
@@ -122,6 +124,7 @@ function toggle() {
     color: var(--collapse-text);
     cursor: pointer;
     text-align: left;
+    transition: color 0.2s ease;
 
     &:disabled {
       opacity: 0.4;
@@ -145,7 +148,7 @@ function toggle() {
     height: 16px;
     flex-shrink: 0;
     color: var(--collapse-muted);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -167,6 +170,14 @@ function toggle() {
     @media (prefers-reduced-motion: reduce) {
       transition: none;
     }
+  }
+
+  &--open &__header {
+    color: var(--collapse-active-text);
+  }
+
+  &--open &__chevron {
+    color: var(--collapse-active-chevron);
   }
 
   &--open &__body {
