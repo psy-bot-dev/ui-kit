@@ -1,5 +1,7 @@
 {
   "name": "@psy-bot-dev/ui",
+  "description": "PsyBot UI Kit — meta-package that re-exports all components",
+  "license": "MIT",
   "version": "0.1.2",
   "repository": {
     "type": "git",

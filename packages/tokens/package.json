@@ -1,5 +1,7 @@
 {
   "name": "@psy-bot-dev/tokens",
+  "description": "Design tokens and Tailwind preset for the PsyBot UI Kit",
+  "license": "MIT",
   "version": "0.2.0",
   "repository": {
     "type": "git",
