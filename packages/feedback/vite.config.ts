@@ -13,7 +13,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["vue", /^@psy-bot-dev\//],
+      external: ["vue", "vue-i18n", /^@psy-bot-dev\//],
     },
     cssCodeSplit: false,
   },
