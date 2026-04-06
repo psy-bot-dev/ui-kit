@@ -3,6 +3,7 @@
     <div
       v-if="showBanner"
       class="cookie-banner"
+      :class="`cookie-banner--${props.position}`"
       role="dialog"
       :aria-label="t('cookies | preferencesTitle')"
     >
@@ -121,11 +122,13 @@ import type { CookieConsentOptions } from "./useCookieConsent";
 interface Props {
   cookiePolicyUrl?: string;
   onAnalyticsGranted?: CookieConsentOptions["onAnalyticsGranted"];
+  position?: "left" | "center" | "right";
 }
 
 const props = withDefaults(defineProps<Props>(), {
   cookiePolicyUrl: "",
   onAnalyticsGranted: undefined,
+  position: "center",
 });
 
 const { t } = useI18n();
@@ -184,6 +187,18 @@ function handleSavePreferences() {
     padding: 24px;
     display: flex;
     justify-content: center;
+  }
+
+  &--left {
+    @media (min-width: 769px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &--right {
+    @media (min-width: 769px) {
+      justify-content: flex-end;
+    }
   }
 
   &__body,
