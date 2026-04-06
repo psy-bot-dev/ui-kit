@@ -88,7 +88,7 @@ function handleKeydown(event: KeyboardEvent, currentItem: TabItem) {
   }
 
   if (nextIndex >= 0) {
-    const nextItem = enabledItems[nextIndex]!;
+    const nextItem = enabledItems[nextIndex];
     emit("update:modelValue", nextItem.key);
     const allIndex = props.items.findIndex((i) => i.key === nextItem.key);
     nextTick(() => {
