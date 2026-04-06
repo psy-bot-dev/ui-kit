@@ -1,5 +1,4 @@
-import { ref, computed, watch } from "vue";
-import { getCookieDomain } from "./utils/getCookieDomain";
+import { ref, computed, watch, onMounted } from "vue";
 
 export interface CookiePreferences {
   essential: true;
@@ -7,36 +6,73 @@ export interface CookiePreferences {
 }
 
 export interface CookieConsentOptions {
+  cookieDomain?: string;
   onAnalyticsGranted?: () => void;
 }
 
-const COOKIE_NAME = "cookie_consent";
-const MAX_AGE = 365 * 24 * 60 * 60;
+export const COOKIE_CONSENT_NAME = "cookie_consent";
+export const COOKIE_CONSENT_MAX_AGE = 365 * 24 * 60 * 60;
+
+// Module-level reopen flag — shared across all instances
+const _reopenFlag = ref(false);
+
+/** Trigger reopen from anywhere (sidebar, footer, etc.) */
+export function reopenCookieConsent() {
+  _reopenFlag.value = true;
+}
+
+function readCookie(name: string): CookiePreferences | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${name}=([^;]*)`),
+  );
+  if (!match) return null;
+  try {
+    return JSON.parse(decodeURIComponent(match[1]));
+  } catch {
+    return null;
+  }
+}
+
+function writeCookie(
+  name: string,
+  value: CookiePreferences,
+  opts: { domain?: string; maxAge: number },
+) {
+  let cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}; path=/; max-age=${opts.maxAge}; samesite=lax`;
+  if (opts.domain) cookie += `; domain=${opts.domain}`;
+  if (typeof window !== "undefined" && window.location.protocol === "https:") {
+    cookie += "; secure";
+  }
+  document.cookie = cookie;
+}
 
 export function useCookieConsent(options?: CookieConsentOptions) {
-  const config = useRuntimeConfig();
-  const domain =
-    (config.public.cookieDomain as string | undefined) ??
-    getCookieDomain((config.public.baseUrl as string) ?? "");
-
-  const consentCookie = useCookie<CookiePreferences | null>(COOKIE_NAME, {
-    domain,
-    maxAge: MAX_AGE,
-    sameSite: "lax" as const,
-    secure: import.meta.env?.PROD ?? false,
-    default: () => null,
-  });
-
-  const showBanner = ref(consentCookie.value === null);
+  const showBanner = ref(false);
   const showPreferences = ref(false);
+  const preferences = ref<CookiePreferences | null>(null);
 
   const analyticsEnabled = computed(
-    () => consentCookie.value?.analytics === true,
+    () => preferences.value?.analytics === true,
   );
-  const hasConsent = computed(() => consentCookie.value !== null);
+  const hasConsent = computed(() => preferences.value !== null);
+
+  onMounted(() => {
+    preferences.value = readCookie(COOKIE_CONSENT_NAME);
+    if (preferences.value === null) {
+      showBanner.value = true;
+    } else if (preferences.value.analytics) {
+      options?.onAnalyticsGranted?.();
+    }
+  });
 
   function save(analytics: boolean) {
-    consentCookie.value = { essential: true, analytics };
+    const prefs: CookiePreferences = { essential: true, analytics };
+    preferences.value = prefs;
+    writeCookie(COOKIE_CONSENT_NAME, prefs, {
+      domain: options?.cookieDomain,
+      maxAge: COOKIE_CONSENT_MAX_AGE,
+    });
     showBanner.value = false;
     showPreferences.value = false;
     if (analytics) {
@@ -65,23 +101,18 @@ export function useCookieConsent(options?: CookieConsentOptions) {
     showPreferences.value = false;
   }
 
-  // Support reopen from sidebar/footer via shared state
-  const cookieConsentOpen = useState("cookieConsentOpen", () => false);
-  watch(cookieConsentOpen, (open) => {
+  // Watch module-level reopen flag
+  watch(_reopenFlag, (open) => {
     if (open) {
       reopenBanner();
-      cookieConsentOpen.value = false;
+      _reopenFlag.value = false;
     }
   });
-
-  // On init: if consent already granted with analytics, fire callback
-  if (consentCookie.value?.analytics === true) {
-    options?.onAnalyticsGranted?.();
-  }
 
   return {
     showBanner,
     showPreferences,
+    preferences,
     analyticsEnabled,
     hasConsent,
     acceptAll,

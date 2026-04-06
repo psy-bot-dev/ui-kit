@@ -4,7 +4,12 @@ export { default as BaseTooltip } from "./BaseTooltip.vue";
 export { default as BasePopover } from "./BasePopover.vue";
 export { default as BaseModal } from "./BaseModal.vue";
 export { default as CookieConsentBanner } from "./CookieConsentBanner.vue";
-export { useCookieConsent } from "./useCookieConsent";
+export {
+  useCookieConsent,
+  reopenCookieConsent,
+  COOKIE_CONSENT_NAME,
+  COOKIE_CONSENT_MAX_AGE,
+} from "./useCookieConsent";
 export type {
   CookieConsentOptions,
   CookiePreferences,

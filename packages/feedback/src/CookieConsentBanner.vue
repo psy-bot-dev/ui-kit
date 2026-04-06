@@ -117,16 +117,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useCookieConsent } from "./useCookieConsent";
-import type { CookieConsentOptions } from "./useCookieConsent";
 
 interface Props {
   cookiePolicyUrl?: string;
-  onAnalyticsGranted?: CookieConsentOptions["onAnalyticsGranted"];
+  cookieDomain?: string;
+  onAnalyticsGranted?: () => void;
   position?: "left" | "center" | "right";
 }
 
 const props = withDefaults(defineProps<Props>(), {
   cookiePolicyUrl: "",
+  cookieDomain: undefined,
   onAnalyticsGranted: undefined,
   position: "center",
 });
@@ -139,7 +140,10 @@ const {
   essentialOnly,
   savePreferences,
   openPreferences,
-} = useCookieConsent({ onAnalyticsGranted: props.onAnalyticsGranted });
+} = useCookieConsent({
+  cookieDomain: props.cookieDomain,
+  onAnalyticsGranted: props.onAnalyticsGranted,
+});
 
 const analyticsToggle = ref(false);
 
