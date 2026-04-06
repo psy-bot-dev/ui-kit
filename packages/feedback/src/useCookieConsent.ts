@@ -47,7 +47,17 @@ function writeCookie(
   document.cookie = cookie;
 }
 
+function resolveEffectiveDomain(
+  configDomain: string | undefined,
+): string | undefined {
+  if (typeof window === "undefined") return configDomain;
+  const host = window.location.hostname;
+  if (host === "localhost" || host.startsWith("127.")) return undefined;
+  return configDomain;
+}
+
 export function useCookieConsent(options?: CookieConsentOptions) {
+  const effectiveDomain = resolveEffectiveDomain(options?.cookieDomain);
   const showBanner = ref(false);
   const showPreferences = ref(false);
   const preferences = ref<CookiePreferences | null>(null);
@@ -70,7 +80,7 @@ export function useCookieConsent(options?: CookieConsentOptions) {
     const prefs: CookiePreferences = { essential: true, analytics };
     preferences.value = prefs;
     writeCookie(COOKIE_CONSENT_NAME, prefs, {
-      domain: options?.cookieDomain,
+      domain: effectiveDomain,
       maxAge: COOKIE_CONSENT_MAX_AGE,
     });
     showBanner.value = false;
