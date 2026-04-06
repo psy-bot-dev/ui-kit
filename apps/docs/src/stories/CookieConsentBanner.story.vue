@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { CookieConsentBanner } from "@psy-bot-dev/ui";
 
-function clearConsentCookie() {
-  document.cookie = "cookie_consent=; path=/; max-age=0";
-  window.location.reload();
-}
+// Clear consent cookie before component mounts so banner is always visible
+document.cookie = "cookie_consent=; path=/; max-age=0";
 
 const logAction = (name: string) => () => console.log(`[story] ${name}`);
 </script>
@@ -18,9 +16,6 @@ const logAction = (name: string) => () => console.log(`[story] ${name}`);
           :on-analytics-granted="logAction('analytics-granted')"
         />
       </div>
-      <template #controls>
-        <button @click="clearConsentCookie">Reset cookie &amp; reload</button>
-      </template>
     </Variant>
 
     <Variant title="Right">
