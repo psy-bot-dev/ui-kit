@@ -192,6 +192,9 @@ importers:
       '@psy-bot-dev/tokens':
         specifier: workspace:*
         version: link:../tokens
+      vue-i18n:
+        specifier: '>=9.0.0'
+        version: 11.3.1(vue@3.5.30(typescript@5.9.3))
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.4
