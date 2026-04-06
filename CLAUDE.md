@@ -259,6 +259,24 @@ Slots: `default` (trigger). Teleports to body, auto-repositions.
 
 Slots: `default` (content), `trigger`. Expose: `open()`, `close()`.
 
+#### CookieConsentBanner
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `cookiePolicyUrl` | `string` | `""` | URL to cookie policy page |
+| `cookieDomain` | `string` | — | Cookie domain (e.g. `.nearbyto.me`). Auto-skipped on localhost |
+| `onAnalyticsGranted` | `() => void` | — | Callback when user consents to analytics |
+| `position` | `"left" \| "center" \| "right"` | `"center"` | Horizontal position on desktop |
+
+No events. Requires `useI18n` (vue-i18n) with `cookies | *` keys in consumer locales.
+Accessibility: `role="dialog"`, `aria-label`, `role="switch"` on analytics toggle.
+
+**Composable:** `useCookieConsent(options?)` — manages cookie state via `document.cookie`. Options: `{ cookieDomain?, onAnalyticsGranted? }`.
+
+**Utilities:**
+- `getCookieDomain(baseUrl: string): string | undefined` — derives parent domain from URL
+- `reopenCookieConsent()` — triggers banner reopen from anywhere (sidebar, footer)
+- `COOKIE_CONSENT_NAME`, `COOKIE_CONSENT_MAX_AGE` — cookie contract constants
+
 ### Data Display (`@psy-bot-dev/data-display`)
 
 #### BaseAvatar

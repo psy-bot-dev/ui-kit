@@ -261,6 +261,43 @@ Props: `content` (string, required), `position` (`"top" | "bottom" | "left" | "r
 
 Props: `position` (`"top" | "bottom" | "left" | "right"`), `trigger` (`"click" | "hover"`), `closeOnClickOutside` (boolean). Expose: `open()`, `close()`.
 
+### CookieConsentBanner
+
+GDPR cookie consent banner with granular preferences panel. Uses vanilla `document.cookie` — no Nuxt dependency. Requires `vue-i18n` with `cookies | *` keys.
+
+```vue
+<script setup>
+import { CookieConsentBanner } from '@psy-bot-dev/feedback'
+</script>
+
+<CookieConsentBanner
+  cookie-policy-url="/legal/cookie-policy"
+  cookie-domain=".nearbyto.me"
+  position="center"
+  :on-analytics-granted="() => initGTM()"
+/>
+```
+
+Props: `cookiePolicyUrl` (string), `cookieDomain` (string — auto-skipped on localhost), `onAnalyticsGranted` (callback), `position` (`"left" | "center" | "right"`, default: `"center"`).
+
+**Composable & Utilities:**
+
+```ts
+import {
+  useCookieConsent,
+  reopenCookieConsent,
+  getCookieDomain,
+  COOKIE_CONSENT_NAME,
+  COOKIE_CONSENT_MAX_AGE,
+} from '@psy-bot-dev/feedback'
+
+// Reopen banner from sidebar/footer:
+reopenCookieConsent()
+
+// Derive cookie domain from URL:
+getCookieDomain('https://app.nearbyto.me') // → '.nearbyto.me'
+```
+
 ### BaseAvatar
 
 ```vue
